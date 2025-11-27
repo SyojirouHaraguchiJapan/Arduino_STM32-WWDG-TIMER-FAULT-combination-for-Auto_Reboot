@@ -205,3 +205,6 @@ SYSTICK_CSR:   .word 0xE000E010    @ Systick control register
 - On BluePill(STM32F103C8T6,20k RAM,64k Flash), not cause WWDG RESET, work Timer IRQ usual.
 - On STM32F103RET6(64k RAM, 512k Flash), cause WWDG RESET.
 - There left need of future research and consideration about chip internal structure/circuit difference against globalirq of BluePill.
+## 6. Consideration
+- Automatic Reset might not be must, but while(1) endless loop of Fault processing is not desiable at battery drive device.
+- So, we also had better to consider about "Force Standby" for clear flag at next boot time when Fault occur. 
